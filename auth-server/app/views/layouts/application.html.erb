@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AuthServer</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= yield %>
+
+    <% if @current_user %>
+      <p>Logged in as</p>
+      <%= @current_user.username %>
+
+      <%= form_tag('/sessions', method: :delete) do %>
+        <%= submit_tag 'logout' %>
+      <% end %>
+    <% end %>
+  </body>
+</html>
